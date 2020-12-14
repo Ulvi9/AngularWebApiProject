@@ -1,0 +1,39 @@
+
+<section class="blog py-100-70">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="sec-title text-center">
+          <h2>Our Blog</h2>
+          <h3>News, Tips &amp; More</h3>
+          <div class="icon">
+            <i class="flaticon-heart sec-icon"></i>
+          </div>
+          <p>Al-Anwar are a professional medical &amp; health care services provider institutions. Suitable for Hospitals, Dentists, Gynecologists, Physiatrists.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-4" *ngFor="let blog of blogs">
+        <div class="blog-item">
+          <div class="img-box">
+            <a [routerLink]="['/blog/detail/',blog.id]" class="open-post">
+              <img class="img-fluid" src="{{blog.photoUrl}}" alt="01 Blog">
+            </a>
+            <ul>
+              <li><a href="#">{{blog.topic}}</a></li>
+            </ul>
+          </div>
+          <div class="text-box">
+            <span class="blog-date">{{blog.publishTime|date:'medium'}}</span>
+            <a [routerLink]="['/blog/detail/',blog.id]" class="title-blog">
+              <h5>{{blog.title}}</h5>
+            </a>
+            <p>{{blog.description}}</p>
+            <a [routerLink]="['/blog/detail/',blog.id]"  class="link">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

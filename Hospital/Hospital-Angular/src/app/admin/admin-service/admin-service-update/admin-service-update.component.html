@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <div class="row mt-3">
+    <div class="col-sm-4 mt-3">
+      <h1>Update Doctor</h1>
+    </div>
+    <div class="col-sm-8 mt-3">
+      <div *ngIf="form.dirty" class="alert alert-info">
+        <strong>Information </strong>You have made changes.Any unsaved changes will be lost
+      </div>
+    </div>
+    <div class="col">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" [(ngModel)]="service.name" formControlName="name" class="form-control" placeholder="name">
+          <div class="validation alert alert-danger" *ngIf="_name.invalid && _name.touched">
+            <div *ngIf="_name.errors?.required">
+              Name required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea type="text" [(ngModel)]="service.description" formControlName="description"
+                    class="form-control" placeholder="profession" rows="8"></textarea>
+          <div class="validation alert alert-danger" *ngIf="_description.invalid && _description.touched">
+            <div *ngIf="_description.errors?.required">
+              Description required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>ShortDesc</label>
+          <textarea type="text" [(ngModel)]="service.shortDesc" formControlName="shortDesc"
+                    class="form-control" placeholder="shortDesc" rows="3"></textarea>
+          <div class="validation alert alert-danger" *ngIf="_shortDesc.invalid && _shortDesc.touched">
+            <div *ngIf="_shortDesc.errors?.required">
+              ShortDesc required
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-submit">Update</button>
+      </form>
+    </div>
+  </div>
+</div>

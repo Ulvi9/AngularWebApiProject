@@ -1,0 +1,62 @@
+<section class="contact py-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <form  [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="row">
+
+            <div class="col-md-6 form-item">
+              <input formControlName="name" type="text" name="name" placeholder="Name">
+              <div class="validation alert alert-danger" *ngIf="_name.invalid && _name.touched">
+                <div *ngIf="_name.errors?.required">
+                  Name required
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 form-item">
+              <input formControlName="email" type="email" name="email" placeholder="Email">
+              <div class="validation alert alert-danger" *ngIf="_email.invalid && _email.touched">
+                <div *ngIf="_email.errors?.required">
+                  Email required
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 form-item">
+              <input formControlName="phone" type="tel" name="tel" placeholder="Phone">
+              <div class="validation alert alert-danger" *ngIf="_phone.invalid && _phone.touched">
+                <div *ngIf="_phone.errors?.required">
+                  Phone required
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 form-item">
+              <input formControlName="subject" type="tel" name="tel" placeholder="Subject">
+              <div class="validation alert alert-danger" *ngIf="_subject.invalid && _subject.touched">
+                <div *ngIf="_subject.errors?.required">
+                  Subject required
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 form-item">
+              <textarea formControlName="message" placeholder="Leave Your Message Here....."></textarea>
+              <div class="validation alert alert-danger" *ngIf="_message.invalid && _message.touched">
+                <div *ngIf="_message.errors?.required">
+                  Message required
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 form-item">
+              <button type="submit" [disabled]="form.invalid" class="btn-1">Send Message</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

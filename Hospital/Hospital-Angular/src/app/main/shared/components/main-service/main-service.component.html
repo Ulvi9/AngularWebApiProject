@@ -1,0 +1,31 @@
+
+<section class="services py-100-70">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="sec-title text-center">
+          <h2>Our Services</h2>
+          <h3>High Quality <span>Services</span></h3>
+          <div class="icon">
+            <i class="flaticon-heart sec-icon"></i>
+          </div>
+          <p>Al-Anwar are a professional medical &amp; health care services provider institutions. Suitable for Hospitals, Dentists, Gynecologists, Physiatrists.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let service of services;let i=index">
+        <div *ngIf="i<8">
+          <div class="services-item">
+            <i class="{{service.iconClass}}"></i>
+            <div class="item-content">
+              <h4>{{service.name}}</h4>
+              <p>{{service.shortDesc}}</p>
+              <a [routerLink]="'/service/detail/'+service.id">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

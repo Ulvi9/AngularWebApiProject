@@ -1,0 +1,20 @@
+<section class="shop py-100">
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let product of products" class="col-md-6 col-lg-4">
+       <app-shop-product-item [product]="product"></app-shop-product-item>
+      </div>
+      <div class="col-md-12">
+        <pagination [boundaryLinks]="true"
+                    [totalItems]="pagination.totalItems"
+                    [itemsPerPage]="pagination.itemsPerPage"
+                    [(ngModel)]="pagination.currentPage"
+
+                    (pageChanged)="pageChanged($event)"
+                    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+
+        </pagination>
+      </div>
+    </div>
+  </div>
+</section>

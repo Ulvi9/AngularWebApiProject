@@ -1,0 +1,112 @@
+<div class="card border-0"
+     style="position: absolute;top:200px;right:210px;z-index: 2;
+     background: transparent;width: 280px;">
+  <div class="card-body">
+    <ul *ngFor="let searchItem of searchItems">
+      <app-search-item [searchItem]="searchItem"></app-search-item>
+    </ul>
+  </div>
+</div>
+
+<nav class="nav-box fixed-top">
+  <div class="container">
+    <div class="top-nav">
+      <div class="logo">
+        <a [routerLink]="['home']"><img class="img-fluid" src="{{bio.logoUrl}}"></a>
+        <a href="#open-nav-bar-menu" class="open-nav-bar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+      <div class="nav-info">
+        <div class="box">
+          <div class="info">
+            <i class="flaticon-emergency-call"></i>
+            <ul class="text-info">
+              <li><a href="#"><span>Phone : </span>{{bio.phone}}</a></li>
+              <li><a href="#"><span>Email : </span>{{bio.email}}</a></li>
+            </ul>
+          </div>
+          <input type="text" (focusout)="changeInputValue($event)" (keyup)="search($event)"
+                 class="btn-1" placeholder="search">
+        </div>
+      </div>
+    </div>
+    <div class="nav-bar" id="open-nav-bar-menu">
+      <div class="box">
+        <ul class="level-1">
+          <li class="has-menu">
+            <a [routerLink]="['home']" class="color-active">Home</a>
+            <ul class="level-2">
+              <li><a [routerLink]="['home']">01 Home</a></li>
+              <li><a [routerLink]="['home']">02 Home</a></li>
+              <li><a [routerLink]="['home']">03 Home</a></li>
+            </ul>
+          </li>
+          <li class="has-menu">
+            <a [routerLink]="['about']">About Us</a>
+            <ul class="level-2">
+              <li><a [routerLink]="['about']">About Us 1</a></li>
+              <li><a [routerLink]="['about']">About Us 2</a></li>
+              <li><a [routerLink]="['about']">About Us 3</a></li>
+            </ul>
+          </li>
+          <li class="has-menu">
+            <a [routerLink]="['doctor']">Doctors</a>
+            <ul class="level-2">
+              <li><a [routerLink]="['doctor']">Doctor 1</a></li>
+              <li><a [routerLink]="['doctor']">Doctor 2</a></li>
+            </ul>
+          </li>
+          <li class="has-menu">
+            <a [routerLink]="['department']">Departments</a>
+            <ul class="level-2">
+              <li><a [routerLink]="['department']">Departments 1</a></li>
+              <li><a [routerLink]="['department']">Departments 2</a></li>
+            </ul>
+          </li>
+          <li class="has-menu">
+            <a [routerLink]="['blog']">Blog</a>
+            <ul class="level-2">
+              <li><a [routerLink]="['blog']">Blog Standerd</a></li>
+              <li><a [routerLink]="['blog']">Blog Sidebar</a></li>
+            </ul>
+          </li>
+          <li class="has-menu">
+            <a [routerLink]="['shop']">Shop</a>
+            <ul class="level-2">
+              <li><a [routerLink]="['shop']">Shop</a></li>
+              <li><a [routerLink]="['shop']">Single Product</a></li>
+            </ul>
+          </li>
+          <li><a [routerLink]="['contact']" style="cursor: pointer">Contact Us</a></li>
+          <li><a [routerLink]="['login']" *ngIf="!loggedIn()" style="cursor: pointer">Login</a></li>
+          <li><a [routerLink]="['register']" *ngIf="!loggedIn()" style="cursor: pointer">Register</a></li>
+          <li *ngIf="authService.decodedToken?.role=='admin' && loggedIn()">
+            <a [routerLink]="['admin']"
+               style="cursor: pointer">Admin</a>
+          </li>
+          <li *ngIf="loggedIn()">
+            <a > {{authService.decodedToken?.unique_name|titlecase}}</a>
+          </li>
+
+          <li>
+            <a class="nav-link" (click)="logOut()" *ngIf="loggedIn()" style="cursor: pointer">Logout</a>
+          </li>
+        </ul>
+        <ul class="level-1">
+          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li class="cart" style="position: relative">
+            <a *ngIf="authService.loggedIn()" [routerLink]="['basket']"><i class="fas fa-shopping-cart"></i></a>
+            <div *ngIf="(basket$ | async) as basket" class="cart-no basket" >{{basket.basketItems.length}}</div>
+          </li>
+          <li >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
