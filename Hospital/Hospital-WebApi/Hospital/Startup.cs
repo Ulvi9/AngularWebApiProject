@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Hospital.BLL.Helpers;
 using Hospital.BLL.Mapper;
+using Hospital.BLL.Middleware;
 using Hospital.DAL;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -83,6 +84,7 @@ namespace Hospital
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseStaticFiles();
+           // app.UseMiddleware<ExceptionMiddleware>();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
