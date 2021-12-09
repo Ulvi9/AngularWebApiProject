@@ -17,5 +17,11 @@ namespace Hospital.BLL.Helpers
             };
             return query;
         }
+        public static IQueryable<Product>Search(this IQueryable<Product>query,string searchTerm)
+        {
+            if (String.IsNullOrEmpty(searchTerm)) return query;
+            string lowerOrTrimSearchTerm = searchTerm.ToLower().Trim();
+            return query.Where(p => p.Name.ToLower().Contains(lowerOrTrimSearchTerm));
+        }
     }
 }
