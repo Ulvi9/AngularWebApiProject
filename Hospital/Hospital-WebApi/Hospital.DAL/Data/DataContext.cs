@@ -1,5 +1,6 @@
 ﻿using System;
 using Hospital.DAL.Entities;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hospital.DAL
@@ -34,6 +35,13 @@ namespace Hospital.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            
+            //add role
+            // modelBuilder.Entity<IdentityRole>()
+            //     .HasData(
+            //         new IdentityRole {Name = "Admin"},
+            //         new IdentityRole {Name = "Member"}
+            //     );
             
             //bio
             modelBuilder.Entity<Bio>().HasData(
