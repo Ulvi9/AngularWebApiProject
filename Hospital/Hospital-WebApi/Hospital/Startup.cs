@@ -10,6 +10,8 @@ using Hospital.BLL.Helpers;
 using Hospital.BLL.Mapper;
 using Hospital.BLL.Middleware;
 using Hospital.DAL;
+using Hospital.DAL.Entities;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -78,6 +80,12 @@ namespace Hospital
             {
                 options.AddPolicy("AllowAnyCorsPolicy", policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             });
+
+            // services.AddIdentityCore<User>()
+            //     .AddRoles<IdentityRole>()
+            //     .AddEntityFrameworkStores<DataContext>();
+            // services.AddAuthentication();
+            // services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
