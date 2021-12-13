@@ -112,5 +112,19 @@ namespace Hospital.Controllers
             if (product == null) return NotFound();
             return Ok();
         }
+        /// <summary>
+        /// unique Product brand types
+        /// </summary>
+        /// <returns></returns>
+        // GET api/<ProductController>/
+        // [HttpGet("filter")]
+        // public async Task<IActionResult> Delete()
+        // {
+        //     //return uniqu brands
+        //     var brands = await _context.Products.Select(p=>p.Brand).Distinct().ToListAsync();
+        //     //return unique types
+        //     var types = await _context.Products.Select(p=>p.Type).Distinct().ToListAsync();
+        //     return Ok(new{ brands,types});
+        // }
     }
 }
